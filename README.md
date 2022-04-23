@@ -129,15 +129,16 @@ For unmasked dataset normalization and resolution-check,the following actions ar
 To run the train code on your local computer, please do the following :...
 
 For training the VGG-19 model,the following actions are taken:
-  -**Weight initialisation:** We fine-tuned the VGG-19 convolutional network. To be more specific,  we used the pre-trained VGG-19 model on ImageNet dataset with 1000 categories as an initialization for the task of recognizing masked faces. Rest of the training looks as usual ( forward and backward propagation )
   
-  -**Optimization objective:** The training is carried out by optimising the cross-entropy loss function using mini-batch Adam algorithm.The batch size is set to 32, and all the parameters are being optimized here.
+    --**Weight initialisation:** We fine-tuned the VGG-19 convolutional network. To be more specific,  we used the pre-trained VGG-19 model on ImageNet dataset with 1000 categories as an initialization for the task of recognizing masked faces. Rest of the training looks as usual ( forward and backward propagation )
+    
+     -**Optimization objective:** The training is carried out by optimising the cross-entropy loss function using mini-batch Adam algorithm.The batch size is set to 32, and all the parameters are being optimized here.
   
-  -**Learning rate**: The learning rate was set to 1e-4. The learning was stopped after 100 epochs for the model trained on unmasked dataset and after 250 epochs for the model trained on the mixed dataset.
+    -**Learning rate**: The learning rate was set to 1e-4. The learning was stopped after 100 epochs for the model trained on unmasked dataset and after 250 epochs for the model trained on the mixed dataset.
   
-  - **Regularization:** The learning rate was set to decay by a factor of 0.5 after 1000 epochs and training was also regularized by dropout regularization for the first two-fully connected layers where the dropout ratio was set to 0.5.
-
-  -**Input images pre-processing & augmentation:** To obtain the fixed-size 224×224 ConvNet input images, they were randomly cropped from rescaled training images. To further augment the  training set, the crops underwent random horizontal flipping. Also, the training dataset was normalized using its computed mean and STD.For the validation dataset was centred cropped. Also, the validation dataset was normalized using its computed mean and STD.
+    -**Regularization:** The learning rate was set to decay by a factor of 0.5 after 1000 epochs and training was also regularized by dropout regularization for the first two-fully connected layers where the dropout ratio was set to 0.5.
+    
+    -**Input images pre-processing & augmentation:** To obtain the fixed-size 224×224 ConvNet input images, they were randomly cropped from rescaled training images. To further augment the  training set, the crops underwent random horizontal flipping. Also, the training dataset was normalized using its computed mean and STD.For the validation dataset was centred cropped. Also, the validation dataset was normalized using its computed mean and STD.
   
 
 To run the train code on Compute Canada, please do the following :...
