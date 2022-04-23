@@ -1,4 +1,7 @@
 
+#### This code does normalization and resolution-check for the unmasked dataset used in the training part located at
+#### the following path: /Data/Feature_extractor/Unmasked_dataset/
+
 
 ######## Train Dataset Normalization ################
 
