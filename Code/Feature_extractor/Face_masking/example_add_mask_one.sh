@@ -15,9 +15,9 @@ export ENV_NAME=env_face
 
 
 source /EECE571L-MaskedFaceDetection-CNN/Code/env_face/bin/activate  &&
-cd /EECE571L-MaskedFaceDetection-CNN/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D/utils/cython &&
+cd /EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D/utils/cython &&
 python3 setup.py build_ext -i &&
-cd  /EECE571L-MaskedFaceDetection-CNN/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D &&
+cd /EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D &&
 python3 add_mask_one.py
 
 
