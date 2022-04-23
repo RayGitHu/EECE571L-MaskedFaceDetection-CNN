@@ -16,10 +16,10 @@ export ENV_NAME=env_face
 
 source /EECE571L-MaskedFaceDetection-CNN/Code/env_face/bin/activate  &&
 
-cd /EECE571L-MaskedFaceDetection-CNN/Face_masking/FaceX-Zoo/face_sdk &&
+cd /EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk &&
 python3 api_usage/face_detect.py
 
-cd /EECE571L-MaskedFaceDetection-CNN/Face_masking/FaceX-Zoo/face_sdk &&
+cd /EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk &&
 python3 api_usage/face_alignment.py
 
 
