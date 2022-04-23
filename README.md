@@ -125,7 +125,7 @@ The related codes are in Code/Feature_extractor folder. These codes do the follo
 For unmasked dataset normalization and resolution-check,the following actions are taken:
   - Each of the train and validation datasets are normalized using their computed mean and STD values.
   - Each of the train and validation datasets are checked to ensure that they have a resolution of 250 x 250.
-  - 
+  
 To run the train code on your local computer, please do the following :...
 
 For training the VGG-19 model,the following actions are taken:
