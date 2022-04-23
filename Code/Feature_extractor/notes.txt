@@ -1,0 +1,133 @@
+
+-----------------------------------------------------------------------------------------------------------------------
+TRAINING 
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+-------------------------------------
+Training  VGG-19 on the mixed dataset
+-------------------------------------
+
+
+(1) Inside the "train_face.py" code located at path "/EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/training_code/train_face.py", please make the following changes:
+
+ 
+
+	-Modify mean and STD values (lines 184 & 194) to those of the unmasked dataset
+
+		
+		mean train dataset: [0.4706155413031573, 0.4155981526458318, 0.3794127018972444]
+
+		STD train dataset: [0.2681391062637582 ,0.24723137207986798, 0.24271453938450466]
+
+
+		mean validation dataset: [0.46033145548530674, 0.4085566565937252, 0.3737638329072535]
+		STD validation dataset: [0.26921737209173047, 0.25139288966241435, 0.2461153929592356]
+
+
+
+
+(2) Inside the "train.sh" bash file located at path "/EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/training_code/train.sh", please make the following change:
+
+
+
+python -u /EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/training_code/train_face.py --dataDir /EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Mixed_dataset --LocationofSavedModel /EECE571L-MaskedFaceDetection-CNN/Model/modelOrgvgg19.h5  --numclasses 62 --epochs 250  
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+Testing 
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+----------------------------------------------------------
+Testing the trained  VGG-19 on the masked dataset
+
+------------------------------------------------------------
+(1) Inside the "test_accuracy.sh" bash file located at path /EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/test_code/test_accuracy.sh", please make the following change:
+ 
+At line 26, please replace the following line with:
+--dataDir /EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Test_dataset/Tes0
+
+With 
+
+--dataDir /EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Test_dataset/Tes1
+
+
+
+
+------------------------------------------------
+Testing the trained  VGG-19 on the mixed dataset
+
+-------------------------------------------------
+
+
+(1) Inside the "testCNN_face0_accuracy.py" code located at path "/EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/test_code/testCNN_face0_accuracy.py", please make the following changes: 
+
+	-Modify mean and STD values (lines 37 & 38) to those of the mixed dataset
+
+		mean train dataset: [0.4706155413031573, 0.4155981526458318, 0.3794127018972444]
+
+		STD train dataset: [0.2681391062637582 ,0.24723137207986798, 0.24271453938450466]
+
+
+		mean validation dataset: [0.46033145548530674, 0.4085566565937252, 0.3737638329072535]
+		STD validation dataset: [0.26921737209173047, 0.25139288966241435, 0.2461153929592356]
+
+
+- 
+(2) Inside the "test_accuracy.sh" bash file located at path /EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/test_code/test_accuracy.sh", please make the following change:
+ 
+At line 26, please replace "Test_dataset" in the following 
+--dataDir /EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Test_dataset/Tes0
+
+With "Test_dataset_mixed" where Test_dataset_mixed is a new dataset that needs to be made amiable for use. Please note that we have not Testing the trained  VGG-19 on the mixed dataset as it was not necessary for our case.
+
+------------------------------------------------
+Masking other datasets
+------------------------------------------------
+
+For masking other datasets, you just need to make the following changes:
+
+
+
+(1) You just need to change the directory path for the dataset in the following files:
+
+
+face_detect.py: Located at "/EECE571L-MaskedFaceDetection-CNN/Face_masking/FaceX-Zoo/face_sdk/api_usage/face_detect.py"
+
+please change the directory path at line 56
+
+face_alignment.py : Located at "/EECE571L-MaskedFaceDetection-CNN/Face_masking/FaceX-Zoo/face_sdk/api_usage/face_alignment.py"
+
+please change the directory path at line 55
+
+
+add_mask_one.py : Located at "/EECE571L-MaskedFaceDetection-CNN/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D/add_mask_one.py
+ please change the directory path at line 13
+
+
+
+------------------------------------------------
+Normalizing other datasets(i.e. mixed dataset)
+------------------------------------------------
+
+For normalizing other datasets, you just need to make the following changes:
+
+
+
+(1) You just need to change the directory path for the train and validation dataset in the following file:
+
+
+Normalization_and_resolution_UnnaskedDataset.py: Located at "/EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/Data_preprocessing/Normalization_and_resolution_UnnaskedDataset.py"
+
+- please change the directory paths at line 13,71,129,166 to the following:
+
+'./EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Mixed_dataset/'
+
+
+
+
