@@ -115,7 +115,6 @@ To train the vgg-19 model: https://pytorch.org/tutorials/beginner/transfer_learn
 
 ## Model 
 #### Feature Extractor
-
 The related codes are in Code/Feature_extractor folder. These codes do the following:
   - Normalization and resolution-check for the Unmasked dataset used in the training part. 
   - Training VGG-19 model on the unmasked train dataset.
@@ -125,22 +124,15 @@ The related codes are in Code/Feature_extractor folder. These codes do the follo
 For unmasked dataset normalization and resolution-check,the following actions are taken:
   - Each of the train and validation datasets are normalized using their computed mean and STD values.
   - Each of the train and validation datasets are checked to ensure that they have a resolution of 250 x 250.
-  
-To run the train code on your local computer, please do the following :...
+To run the normalization and resolution-check code on your local computer, please do the following :...
+
 
 For training the VGG-19 model,the following actions are taken:
-  
-  _-Weight initialisation:_ We fine-tuned the VGG-19 convolutional network. To be more specific,  we used the pre-trained VGG-19 model on ImageNet dataset with 1000 categories as an initialization for the task of recognizing masked faces. Rest of the training looks as usual ( forward and backward propagation )
-    
-  _-Optimization objective:_ The training is carried out by optimising the cross-entropy loss function using mini-batch Adam algorithm.The batch size is set to 32, and all the parameters are being optimized here.
-  
-  _-Learning rate:_ The learning rate was set to 1e-4. The learning was stopped after 100 epochs for the model trained on unmasked dataset and after 250 epochs for the model trained on the mixed dataset.
-  
-  _-Regularization:_ The learning rate was set to decay by a factor of 0.5 after 1000 epochs and training was also regularized by dropout regularization for the first two-fully connected layers where the dropout ratio was set to 0.5.
-    
+  - Weight initialisation: We fine-tuned the VGG-19 convolutional network. To be more specific,  we used the pre-trained VGG-19 model on ImageNet dataset with 1000 categories as an initialization for the task of recognizing masked faces. Rest of the training looks as usual ( forward and backward propagation ).
+  -_Optimization objective:_ The training is carried out by optimising the cross-entropy loss function using mini-batch Adam algorithm.The batch size is set to 32, and all the parameters are being optimized here.
+  -_Learning rate:_ The learning rate was set to 1e-4. The learning was stopped after 100 epochs for the model trained on unmasked dataset and after 250 epochs for the model trained on the mixed dataset.
+  -_Regularization:_ The learning rate was set to decay by a factor of 0.5 after 1000 epochs and training was also regularized by dropout regularization for the first two-fully connected layers where the dropout ratio was set to 0.5.
   _-Input images pre-processing & augmentation:_ To obtain the fixed-size 224×224 ConvNet input images, they were randomly cropped from rescaled training images. To further augment the  training set, the crops underwent random horizontal flipping. Also, the training dataset was normalized using its computed mean and STD.For the validation dataset was centred cropped. Also, the validation dataset was normalized using its computed mean and STD.
-  
-
 To run the train code on Compute Canada, please do the following :...
 
 
@@ -148,14 +140,12 @@ For face detection, alignment,and masking,the following actions are taken:
   - 106 face landmarks are detected.
   - Face image is aligned.
   - Maksed applied to on the face.
-   
-To run the train code on Compute Canada, please do the following :...
+To run the face_detection_alignment_masking code on Compute Canada, please do the following :...
 
 
 For testing the VGG-19 model,the following actions are taken:
 - Two datasets of unseen idenitiy images, one unmaksed and other masked, are fed to the test code.
 - The code computes the accuracy per identity class and the overall accuracy. 
-
 To run the test code on Compute Canada, please do the following :...
 
 
