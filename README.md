@@ -147,7 +147,14 @@ For face detection, alignment,and masking,the following actions are taken:
   - 106 face landmarks are detected.
   - Face image is aligned.
   - Maksed applied to on the face.
-  
+  - Four codes were modified.
+     - _face_detect.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/face_detect.py 
+     - _face_alignment.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/face_alignment.py 
+     - _add_mask_one.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D/add_mask_one.py
+     - _render.pyx_ located at FaceX-Zoo/addition_module/face_mask_adding/FMA-3D/utils/cython/render.pyx  
+ 
+For _face_detect.py_,_face_alignment.py_ , and _add_mask_one.py_  you caan open each code file and see how many code lines were. For _render.pyx_ , we had to modify _line #57_ by replacing _numpy.empty()_ with _numpy.zeros()_. This small change in line #57 helped us to stop getting the noisy masked images. Please note that  _numpy.empty()_  is a "speed up" method while _numpy.zeros() is a  "no speed up" method..
+
 To run the face_detection_alignment_masking code on Compute Canada, please do the following :...
 
 
