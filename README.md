@@ -105,13 +105,14 @@ To train the vgg-19 model: https://pytorch.org/tutorials/beginner/transfer_learn
    To obtain the fixed-size 224×224 ConvNet input images, they were randomly cropped from rescaled training images (one crop per image per SGD iteration). To further augment the training set, the crops underwent random horizontal flipping. The validation dataset was centred cropped. This process is used to avoid overfitting.
 
 #### Put mask on the faces
-   We use code in this link _https://github.com/JDAI-CV/FaceX-Zoo/tree/main/addition_module/face_mask_adding/FMA-3D_ to put mask on the faces.
-   
-   Firstly, we need to extract landmarks on the faces to detect faces. In our project, we determined the number of landmarks to 106.
-   
-   Secondly, we need to do face alignment.
-   
-   Thirdly, we can add mask on the faces.
+   We modify the provided face-masking code in this link _https://github.com/JDAI-CV/FaceX-Zoo/tree/main/addition_module/face_mask_adding/FMA-3D_ 
+
+For face masking, the code does the follwoing:
+  - Face detected using 4 values.
+  -  Face aligned using 106 extracted landmarks values
+  -   Mask applied to on the face.
+
+For more details on face masking process, please see feature extractor sub-section under the Model section below.
 
 ## Model 
 #### Feature Extractor
@@ -150,8 +151,8 @@ To run the train code on Compute Canada, please do the following :...
 
 
 *For face detection, alignment,and masking,the following actions are taken:
-  - 106 face landmarks are detected.
-  - Face image is aligned.
+  - Face detected using 4 values.
+  - Face aligned using 106 extracted landmarks values
   - Maksed applied to on the face.
   - Four codes were modified.
      - _face_detect.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/face_detect.py 
