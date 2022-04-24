@@ -2,7 +2,9 @@
 @author: Yinglu Liu, Jun Wang
 @date: 20201012
 @contact: jun21wangustc@gmail.com
+
 Modified by EECE 571L Team 2-Face1-CNN-2021W2 term 
+#12-25 & 27-31 & 34  ADDED  
 """
 import os # ADDED
 from face_masker import FaceMasker
