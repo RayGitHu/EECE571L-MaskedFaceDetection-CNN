@@ -133,7 +133,7 @@ Note:
   - Face detected using 4 values.
   - Face aligned using 106 extracted landmarks values
   - Maksed applied to on the face.
-  - Four codes were modified from the orginal github code aviaalbe at:https://github.com/JDAI-CV/FaceX-Zoo/tree/main/addition_module/face_mask_adding/FMA-3D.
+  - Four codes were modified from the orginal github code available at: https://github.com/JDAI-CV/FaceX-Zoo/tree/main/addition_module/face_mask_adding/FMA-3D.
      - _face_detect.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/face_detect.py 
      - _face_alignment.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/face_alignment.py 
      - _add_mask_one.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D/add_mask_one.py
@@ -142,7 +142,9 @@ Note:
  
  Note:
  
-	For _face_detect.py_,_face_alignment.py_ , and _add_mask_one.py_  you can open each code file and see how many code lines were. For _render.pyx_ , we had to modify _line #57_ by replacing _numpy.empty()_ with _numpy.zeros()_. This small change in line #57 helped us to stop getting the noisy masked images. Please note that  _numpy.empty()_  is a "speed up" method while _numpy.zeros() is a  "no speed up" method.
+	 -The modifications for the first three codes (_face_detect.py_,_face_alignment.py_ , and _add_mask_one.py_) were focused on making the codes process ALL the images iside each folder in a dataset, not a single image. You can open each code file and see exactly where and how many code lines were.
+	 
+	 -For _render.pyx_ , we had to modify _line #57_ by replacing _numpy.empty()_ with _numpy.zeros()_. This small change in line #57 helped us to stop getting the noisy masked images. Please note that  _numpy.empty()_  is a "speed up" method while _numpy.zeros() is a  "no speed up" method.
 
 
 To run the face_detection_alignment_masking code on Compute Canada, please do the following :...
