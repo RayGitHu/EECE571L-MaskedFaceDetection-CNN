@@ -3,6 +3,7 @@
 #Modified by Hamid Reza Tohidypour for DML of UBC
 #Confidential do not distribute it beyond your team of ECE571
 
+# Further Modified by EECE 571L Team 2-Face1-CNN-2021W2 term 
 
 import torch
 import argparse
@@ -25,7 +26,7 @@ worksheet.set_column('A:A', 20)
 # Add a bold format to use to highlight cells.
 bold = workbook.add_format({'bold': True})
 worksheet.write('A1', 'Identity', bold)
-worksheet.write('B1', 'MSE', bold)
+worksheet.write('B1', 'MAE', bold)
 worksheet.write('C1', 'Dot', bold)
 worksheet.write('D1', 'Dot_normalized', bold)
 
@@ -113,7 +114,7 @@ dataset_path= opt.dataset_path
 row=1
 identities=os.listdir(dataset_path+'/'+'Unmasked')
 for identity in identities:
-    mse,Dot,Dot_normalized=[],[],[]    
+    MAE,Dot,Dot_normalized=[],[],[]    
     if identity !='.DS_Store':
         images_unmasked=os.listdir(dataset_path+'/'+'Unmasked'+'/'+identity)
         images_masked=os.listdir(dataset_path+'/'+'Masked'+'/'+identity)
@@ -154,12 +155,12 @@ for identity in identities:
                     np_features_unmasked_normalized=np_features_unmasked/np.sqrt(np.dot(np_features_unmasked,np.transpose(np_features_unmasked)))
                     
                     #print (np_features_masked)  #this is the feature we want to compare
-                    mse.append(  np.sum(np.abs(np_features_masked-np_features_unmasked))/len(np_features_masked[0]) )
+                    MAE.append(  np.sum(np.abs(np_features_masked-np_features_unmasked))/len(np_features_masked[0]) )
                     Dot.append(np.dot(np_features_masked,np.transpose(np_features_unmasked)))
                     Dot_normalized.append(np.dot(np_features_masked_normalized,np.transpose(np_features_unmasked_normalized)))
                     
         worksheet.write(row,0,identity )
-        worksheet.write(row,1,np.mean(np.array(mse)))
+        worksheet.write(row,1,np.mean(np.array(MAE)))
         worksheet.write(row,2,np.mean(np.array(Dot)))
         worksheet.write(row,3,np.mean(np.array(Dot_normalized)))
         row+=1
