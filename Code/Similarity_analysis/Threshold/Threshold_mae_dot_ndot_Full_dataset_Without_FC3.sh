@@ -23,7 +23,7 @@ module load nixpkgs/16.09  gcc/7.3.0 opencv/4.2
 
 source /EECE571L-MaskedFaceDetection-CNN/Code/env_face/bin/activate
 
-python -u /EECE571L-MaskedFaceDetection-CNN/Code/Similarity_analysis/Threshold/Threshold_mse_dot_ndot_Full_dataset_Without_FC3.py  --dataset_path /EECE571L-MaskedFaceDetection-CNN/Data/Similarity_analysis/Full_dataset --LocationofSavedModel /EECE571L-MaskedFaceDetection-CNN/Model/modelWithBestValidationAcc_unmasked_masked_250epochs_v4.h5
+python -u /EECE571L-MaskedFaceDetection-CNN/Code/Similarity_analysis/Threshold/Threshold_mae_dot_ndot_Full_dataset_Without_FC3.py  --dataset_path /EECE571L-MaskedFaceDetection-CNN/Data/Similarity_analysis/Full_dataset --LocationofSavedModel /EECE571L-MaskedFaceDetection-CNN/Model/modelWithBestValidationAcc_unmasked_masked_250epochs_v4.h5
  
 
 
