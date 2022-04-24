@@ -17,7 +17,7 @@ To train the vgg-19 model: https://pytorch.org/tutorials/beginner/transfer_learn
 ### Operating System
   Mac 12.1/ Windows10/ Linux (Compute Canada)
 ### Requirements and Dependenies
-  All the requirement/dependencies with their versions can be found in Dependencies/ env_face_dependencies.txt
+  All the requirement/dependencies with their versions can be found in Dependencies/requirement.txt
 ### Deep neural network
   VGG-19 model with 5 convolutional layers, 5 max pooling layers, and 3 fully connected layer. The activation function is ReLU. There is no Softmax layer as Pytorch internally computes the probability of each class as the output of the model.
 
