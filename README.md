@@ -50,7 +50,7 @@ To train the vgg-19 model: https://pytorch.org/tutorials/beginner/transfer_learn
     (ENV) [name@server ~] pip install torchsummary                
     (ENV) [name@server ~] pip install tensorboard
     
-### External Computing Services
+### External Computing Services [ to be updated ]
   We used Graham Cluster (graham.computecanada.ca) of the Compute Canada which is based on Linux. We installed "WinSCP" to transfer the folders into Compute Canada and "Putty" to run the Linux codes.
   
   Here are steps to run the code on the Graham cluster of the ComputeCanada:
@@ -128,9 +128,22 @@ The related codes are in Code/Feature_extractor folder. These codes do the follo
   - Each of the train and validation datasets are normalized using their computed mean and STD values.
   - Each of the train and validation datasets are checked to ensure that they have a resolution of 250 x 250.
   
-To run the normalization and resolution-check code on your local computer, please do the following :...
+To run the normalization and resolution-check code on Compute Canada, please do the following (STEP NEEDED) :...
+
+	BASH FILES
+		-Please move the all following bash files to your scratch folder on Compute Canada: ....
 
 
+	VIRTUAL ENVIRONMENT 
+		- You do not need to create as we already create one for you called “env_face” based on the "setup_face_env.sh" bash file.
+		- Go to the “env_face” environment directory
+ 			cd /project/6003167/EECE571_2022/MaskedFaceRecognition_CNN/Github/EECE571L-MaskedFaceDetection-CNN/Code
+		- Activate the “env_face” environment 
+			source ~/env_face/bin/activate
+
+		- Run the following batch batch file  to run the normalization and resolution-check code:
+			cd ~/scratch && sbatch normalization-and-resolution-check_github.sh
+			
 
 
 *For training the VGG-19 model,the following actions are taken:
@@ -145,7 +158,16 @@ To run the normalization and resolution-check code on your local computer, pleas
 
   - Input images pre-processing & augmentation: To obtain the fixed-size 224×224 ConvNet input images, they were randomly cropped from rescaled training images. To further augment the  training set, the crops underwent random horizontal flipping. Also, the training dataset was normalized using its computed mean and STD.For the validation dataset was centred cropped. Also, the validation dataset was normalized using its computed mean and STD.
   
+  
 To run the train code on Compute Canada, please do the following :...
+
+
+	- Run the batch file to train the  VGG-19 model 
+		cd ~/scratch && sbatch train_github.sh
+
+Note: 
+
+	The current batch file trains the VGG-19 model on the unmasked dataset. Please change “Unmasked_dataset” to “Mixed_dataset”  in data directory “- - dataDir”  at line 26 of the "train_github.sh"  if you want to train the model on the mixed train dataset.
 
 
 
@@ -162,16 +184,36 @@ To run the train code on Compute Canada, please do the following :...
  
 For _face_detect.py_,_face_alignment.py_ , and _add_mask_one.py_  you can open each code file and see how many code lines were. For _render.pyx_ , we had to modify _line #57_ by replacing _numpy.empty()_ with _numpy.zeros()_. This small change in line #57 helped us to stop getting the noisy masked images. Please note that  _numpy.empty()_  is a "speed up" method while _numpy.zeros() is a  "no speed up" method.
 
+
 To run the face_detection_alignment_masking code on Compute Canada, please do the following :...
 
+	-Run the batch file for face detection
+		cd ~/scratch && sbatch face_detect_github.sh
 
+	-Run the batch file for face alignment
+		cd ~/scratch && sbatch face_alignment_github.sh
 
+	-Run the batch file for face masking
+		cd ~/scratch && sbatch example_add_mask_one_github.sh
+
+Note: 
+
+	If you want to mask any other dataset, then you only need to remove the existing folders at the following dataset directory and then move your new dataset folders to the dataset directory: 
+		/project/6003167/EECE571_2022/MaskedFaceRecognition_CNN/Github/EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/test_images/dataset
 
 *For testing the VGG-19 model,the following actions are taken:
 - Two datasets of unseen idenitiy images, one unmaksed and other masked, are fed to the test code.
 - The code computes the accuracy per identity class and the overall accuracy. 
 
 To run the test code on Compute Canada, please do the following :...
+
+	-Run the batch file to test the model 
+		cd ~/scratch && sbatch test_accuracy_github.sh
+
+Note: 
+
+	The current batch file tests the re-trained VGG-19 model on unmasked test dataset. Please change “Test0” to “Test1” in thre data directory “- - dataDir” at line 26 of the  test_accuracy_github.sh  if you want to test the model on the masked test dataset.
+
 
 
 
