@@ -131,17 +131,16 @@ The related codes are in Code/Feature_extractor folder. These codes do the follo
 To run the normalization and resolution-check code on Compute Canada, please do the following (STEP NEEDED) :...
 
 	BASH FILES
-		-Please move the all following bash files to your scratch folder on Compute Canada: ....
-
+		-Please move the all bash files inside the "Bash_file" folder above to your scratch folder on Compute Canada.
 
 	VIRTUAL ENVIRONMENT 
-		- You do not need to create as we already create one for you called “env_face” based on the "setup_face_env.sh" bash file.
+		- You do not need to create a virtual enviroment to run our code as we have already created one for you called “env_face” based on the "setup_face_env.sh" bash file.
 		- Go to the “env_face” environment directory
  			cd /project/6003167/EECE571_2022/MaskedFaceRecognition_CNN/Github/EECE571L-MaskedFaceDetection-CNN/Code
 		- Activate the “env_face” environment 
 			source ~/env_face/bin/activate
 
-		- Run the following batch batch file  to run the normalization and resolution-check code:
+		- Run the following batch batch file to run the normalization and resolution-check code:
 			cd ~/scratch && sbatch normalization-and-resolution-check_github.sh
 			
 
@@ -182,7 +181,10 @@ Note:
      - _add_mask_one.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D/add_mask_one.py
      - _render.pyx_ located at  /Code/Feature_extractor/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D/utils/cython/render.pyx  
  
-For _face_detect.py_,_face_alignment.py_ , and _add_mask_one.py_  you can open each code file and see how many code lines were. For _render.pyx_ , we had to modify _line #57_ by replacing _numpy.empty()_ with _numpy.zeros()_. This small change in line #57 helped us to stop getting the noisy masked images. Please note that  _numpy.empty()_  is a "speed up" method while _numpy.zeros() is a  "no speed up" method.
+ 
+ Note:
+ 
+	For _face_detect.py_,_face_alignment.py_ , and _add_mask_one.py_  you can open each code file and see how many code lines were. For _render.pyx_ , we had to modify _line #57_ by replacing _numpy.empty()_ with _numpy.zeros()_. This small change in line #57 helped us to stop getting the noisy masked images. Please note that  _numpy.empty()_  is a "speed up" method while _numpy.zeros() is a  "no speed up" method.
 
 
 To run the face_detection_alignment_masking code on Compute Canada, please do the following :...
