@@ -133,7 +133,7 @@ Note:
   - Face detected using 4 values.
   - Face aligned using 106 extracted landmarks values
   - Maksed applied to on the face.
-  - Four codes were modified.
+  - Four codes were modified from the orginal github code aviaalbe at:https://github.com/JDAI-CV/FaceX-Zoo/tree/main/addition_module/face_mask_adding/FMA-3D.
      - _face_detect.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/face_detect.py 
      - _face_alignment.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/face_alignment.py 
      - _add_mask_one.py_ located at /Code/Feature_extractor/Face_masking/FaceX-Zoo/addition_module/face_mask_adding/FMA-3D/add_mask_one.py
