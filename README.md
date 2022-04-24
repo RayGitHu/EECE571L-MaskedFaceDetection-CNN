@@ -180,7 +180,7 @@ The related codes are in the Code/Similarity_analysis folder. These codes get th
 
 In the threshold code, three similarity functions (Mean Absolute Error, Dot product, and Normalized Dot product) are applied on the feature vectors and are averaged to find a threshold value.
 
-To run the code on Compute Canada, please do the following:...
+To run the code on Compute Canada, please do the following:
 
     -Run the batch file to generate an Excel file with the MAE,DOT, and DOT_NORM threshold values for the 38 identities.
 	        	cd ~/scratch && sbatch Threshold_mae_dot_ndot_Full_dataset_Without_FC3_github.sh
@@ -211,7 +211,32 @@ Note:
 
 In the accuracy code, two new feature vectors are compared with the threshold value and are judged as "same" or "different" identity. Based on the two main conditions which are elaborated in our report, the accuracy of the prediction is evaluated. 
 
-To run the code please change the following variables:...
+To run the code on Compute Canada, please do the following:
+
+	-Run the batch file for computing accuracy score values for the three approaches 
+		cd ~/scratch && sbatch Accuracy_mae_dot_ndot_Full_dataset_Without_FC3_github.sh
+
+
+
+Note:
+
+	If you want to compute accuracy scores for removed dataset (Without FC3 layer, please do the following:
+
+		- Rename ""Accuracy_mae_dot_ndot_Full_dataset_Without_FC3.sh" to "Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.sh"
+
+		- Rename ""Accuracy_mae_dot_ndot_Full_dataset_Without_FC3.py" to "Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.py"
+
+		-  Make sure that you replace line 26 inside "Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.sh" with 
+
+			python -u /project/6003167/EECE571_2022/MaskedFaceRecognition_CNN/Github/EECE571L-MaskedFaceDetection-CNN/Code/Similarity_analysis/Accuracy/Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.py  --dataset_path /project/6003167/EECE571_2022/MaskedFaceRecognition_CNN/Github/EECE571L-MaskedFaceDetection-CNN/Data/Similarity_analysis/Removed_dataset --LocationofSavedModel /project/6003167/EECE571_2022/MaskedFaceRecognition_CNN/Github/EECE571L-MaskedFaceDetection-CNN/Model/modelWithBestValidationAcc_unmasked_masked_250epochs_v4.h5
+ 
+
+		- After deciding whether or not to use the FC3 layer of the VGG-19 feature extractor model, run the batch file to compute the accuracy scores for each of the MAE,DOT, and DOR_NORM approaches:
+
+			cd ~/scratch && sbatch Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.sh
+
+
+
 
 In the weighting_model code, the error between the two feature vectors is calculated and a classification model is trained to apply optimal weights on each entity of the feature vector. This classification model determines if the two masked and unmasked images corresponds to the same/ different people based on the error between their feature vectors. 
 
