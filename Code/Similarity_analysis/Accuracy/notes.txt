@@ -1,54 +1,39 @@
-############################ Finding MSE/ Dot product/ normalized dot thresholds for removed dataset without FC3 layer ###########################
+############### Finding MSE/ Dot product/ normalized dot thresholds for removed dataset without FC3 layer ###############
 
+Note: 
+	If you want to compute  MAE/ Dot product/ normalized dot thresholds for removed dataset (Without FC3 layer) , please do the following:
 
+		- Rename "Threshold_mae_dot_ndot_Full_dataset_Without_FC3.sh" to "Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.sh"
 
+		- Rename  "Threshold_mae_dot_ndot_Full_dataset_Without_FC3.py" to "Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.py"
 
-- Rename ""Threshold_mse_dot_ndot_Full_dataset_Without_FC3.sh" to "Threshold_mse_dot_ndot_Removed_dataset_Without_FC3.sh"
-
-- Rename ""Threshold_mse_dot_ndot_Full_dataset_Without_FC3.py" to "Threshold_mse_dot_ndot_Removed_dataset_Without_FC3.py"
-
-
-
-
-
-- Make sure that you replace line 26 inside "Threshold_mse_dot_ndot_Removed_dataset_Without_FC3.sh" with 
-
-   python -u /EECE571L-MaskedFaceDetection-CNN/Code/Similarity_analysis/Threshold/Threshold_mse_dot_ndot_Removed_dataset_Without_FC3.py  --dataset_path /EECE571L-MaskedFaceDetection-CNN/Data/Similarity_analysis/Removed_dataset --LocationofSavedModel /EECE571L-MaskedFaceDetection-CNN/Model/modelWithBestValidationAcc_unmasked_masked_250epochs_v4.h5
+		- Make sure that you replace line 26 inside "Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.sh" with  the following :
+   python -u /EECE571L-MaskedFaceDetection-CNN/Code/Similarity_analysis/Threshold/Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.py  --dataset_path /EECE571L-MaskedFaceDetection-CNN/Data/Similarity_analysis/Removed_dataset --LocationofSavedModel /EECE571L-MaskedFaceDetection-CNN/Model/modelWithBestValidationAcc_unmasked_masked_250epochs_v4.h5
  
 
+		- After deciding whether or not to use the FC3 layer of the VGG-19 feature extractor model (Lines 86-105), run the batch file to generate an Excel file containing the threshold values for each of the 38 identities.
+		cd ~/scratch && sbatch Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.sh
 
-
-- After deciding whether or not to use the FC3 layer of the VGG-19 feature extractor model (Lines 86-105), run the "Threshold_mse_dot_ndot_Removed_dataset_Without_FC3.py" file using the "Threshold_mse_dot_ndot_Removed_dataset_Without_FC3.sh" bash file to generate an Excel file containing the threshold values for each of the 38 identities.
-
-
-- Using Excel Avg function, take the average threshold value for each one of the three approaches. You should end up with three threshold values. 
-
+		-  Using Excel Avg function, take the average threshold value for each column of the MAE,DOT, and DOT_NORM approaches. You should end up with three threshold values. For your connivence, the final three threshold values were added to the “Accuracy_mae_dot_ndot_Full_dataset_Without_FC3.py” code file.
 
 
 
 
-############################ Finding MSE/ Dot product/ normalized dot accuracy scores  for removed dataset without FC3 layer ###########################
+############################ Finding accuracy scores for removed dataset without FC3 layer ###########################
 
+Note:
+ If you want to compute accuracy scores for removed dataset (Without FC3 layer, please do the following:
 
-- Rename ""Accuracy_mse_dot_ndot_Full_dataset_Without_FC3.sh" to "Accuracy_mse_dot_ndot_Removed_dataset_Without_FC3.sh"
+	- Rename ""Accuracy_mae_dot_ndot_Full_dataset_Without_FC3.sh" to "Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.sh"
 
-- Rename ""Accuracy_mse_dot_ndot_Full_dataset_Without_FC3.py" to "Accuracy_mse_dot_ndot_Removed_dataset_Without_FC3.py"
+	- Rename ""Accuracy_mae_dot_ndot_Full_dataset_Without_FC3.py" to "Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.py"
 
-    
+	-  Make sure that you replace line 26 inside "Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.sh" with 
 
--  Make sure that you replace line 26 inside "Accuracy_mse_dot_ndot_Removed_dataset_Without_FC3.sh" with 
-
-python -u /EECE571L-MaskedFaceDetection-CNN/Code/Similarity_analysis/Accuracy/Accuracy_mse_dot_ndot_Removed_dataset_Without_FC3.py  --dataset_path /EECE571L-MaskedFaceDetection-CNN/Data/Similarity_analysis/Removed_dataset --LocationofSavedModel /EECE571L-MaskedFaceDetection-CNN/Model/modelWithBestValidationAcc_unmasked_masked_250epochs_v4.h5
+python -u /EECE571L-MaskedFaceDetection-CNN/Code/Similarity_analysis/Accuracy/Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.py  --dataset_path /EECE571L-MaskedFaceDetection-CNN/Data/Similarity_analysis/Removed_dataset --LocationofSavedModel /EECE571L-MaskedFaceDetection-CNN/Model/modelWithBestValidationAcc_unmasked_masked_250epochs_v4.h5
  
 
-
- 
-- You can see the new threshold values added inside "Accuracy_mse_dot_ndot_Removed_dataset_Without_FC3.py"
-
-
-
-
-
-- After deciding whether or not to use the FC3 layer of the VGG-19 feature extractor model, run the "Accuracy_mse_dot_ndot_Removed_dataset_Without_FC3.py" file using the "Accuracy_mse_dot_ndot_Removed_dataset_Without_FC3.sh" bash file to compute the accuracy scores for each one of the three approaches.
+- After deciding whether or not to use the FC3 layer of the VGG-19 feature extractor model, run the batch file to compute the accuracy scores for each of the MAE,DOT, and DOR_NORM approaches:
+	cd ~/scratch && sbatch Accuracy_mae_dot_ndot_Removed_dataset_Without_FC3.sh
 
 
