@@ -116,19 +116,23 @@ To train the vgg-19 model: https://pytorch.org/tutorials/beginner/transfer_learn
 ## Model 
 #### Feature Extractor
 The related codes are in Code/Feature_extractor folder. These codes do the following:
-  - Normalization and resolution-check for the Unmasked dataset used in the training part. 
-  - Training VGG-19 model on the unmasked train dataset.
-  - Face detection,alignment, and masking for unmasked test dataset (i.e. Data/Feature_extractor/Test_dataset/Test0/test)
-  - Testing the trained VGG-19 model unmasked test dataset. 
+  - *Normalization and resolution-check for the Unmasked dataset used in the training part. 
+  - *Training VGG-19 model on the unmasked train dataset.
+  - *Face detection,alignment, and masking for unmasked test dataset (i.e. Data/Feature_extractor/Test_dataset/Test0/test)
+  - *Testing the trained VGG-19 model unmasked test dataset. 
 
-For unmasked dataset normalization and resolution-check,the following actions are taken:
+
+
+*For unmasked dataset normalization and resolution-check,the following actions are taken:
   - Each of the train and validation datasets are normalized using their computed mean and STD values.
   - Each of the train and validation datasets are checked to ensure that they have a resolution of 250 x 250.
   
 To run the normalization and resolution-check code on your local computer, please do the following :...
 
 
-For training the VGG-19 model,the following actions are taken:
+
+
+*For training the VGG-19 model,the following actions are taken:
   - Weight initialisation: We fine-tuned the VGG-19 convolutional network. To be more specific,  we used the pre-trained VGG-19 model on ImageNet dataset with 1000 categories as an initialization for the task of recognizing masked faces. Rest of the training looks as usual ( forward and backward propagation ).
   
   - Optimization objective: The training is carried out by optimising the cross-entropy loss function using mini-batch Adam algorithm.The batch size is set to 32, and all the parameters are being optimized here.
@@ -143,7 +147,9 @@ For training the VGG-19 model,the following actions are taken:
 To run the train code on Compute Canada, please do the following :...
 
 
-For face detection, alignment,and masking,the following actions are taken:
+
+
+*For face detection, alignment,and masking,the following actions are taken:
   - 106 face landmarks are detected.
   - Face image is aligned.
   - Maksed applied to on the face.
@@ -158,7 +164,9 @@ For _face_detect.py_,_face_alignment.py_ , and _add_mask_one.py_  you caan open 
 To run the face_detection_alignment_masking code on Compute Canada, please do the following :...
 
 
-For testing the VGG-19 model,the following actions are taken:
+
+
+*For testing the VGG-19 model,the following actions are taken:
 - Two datasets of unseen idenitiy images, one unmaksed and other masked, are fed to the test code.
 - The code computes the accuracy per identity class and the overall accuracy. 
 
