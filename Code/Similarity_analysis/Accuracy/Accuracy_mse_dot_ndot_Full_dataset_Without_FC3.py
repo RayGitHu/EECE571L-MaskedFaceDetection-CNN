@@ -2,6 +2,8 @@
 #Modified by Hamid Reza Tohidypour for DML of UBC
 #Confidential do not distribute it beyond your team of ECE571
 
+# Further Modified by EECE 571L Team 2-Face1-CNN-2021W2 term 
+
 
 import torch
 import argparse
@@ -16,28 +18,28 @@ from datetime import datetime
 import xlsxwriter
 
 
-# Threshold values using the MSE DOT and DOT_NORM approaches
+# Threshold values using the MAE, DOT, and DOT_NORM approaches
 
 		
-MSE_treshold =0.216870382   # without classifier (full dataset)
+MAE_treshold =0.216870382   # without classifier (full dataset)
 DOT_threshold = 1029.688143   # without classifier (full dataset)
 DOT_NORM_threshold = 0.68939216   # without classifier (full dataset)
 
 '''		
-MSE_treshold =3.209509571	  # with classifier (full dataset)
+MAE_treshold =3.209509571	  # with classifier (full dataset)
 DOT_threshold = 7485.986052   # with classifier (full dataset)
 DOT_NORM_threshold =0.968664979   # with classifier (full dataset)
 '''
 
 '''		
-MSE_treshold =0.239562387    # without classifier (removed dataset)
+MAE_treshold =0.239562387    # without classifier (removed dataset)
 DOT_threshold = 948.3677224     # without classifier (removed dataset)
 DOT_NORM_threshold = 0.647773446	  # without classifier (removed dataset)
 '''
 
 
 '''	
-MSE_treshold =3.478223226   # with classifier (removed dataset)
+MAE_treshold =3.478223226   # with classifier (removed dataset)
 DOT_threshold = 7357.339471	  # with classifier (removed dataset)
 DOT_NORM_threshold = 0.965166087	  # with classifier (removed dataset)
 '''
@@ -122,8 +124,8 @@ dataset_path= opt.dataset_path
 ############  the for loop that reads the images inside the folders
 # The number of times the classification happens
 count=0
-# The number of times the classification was correct using the MSE approach
-correct_MSE=0
+# The number of times the classification was correct using the MAE approach
+correct_MAE=0
 # The number of times the classification was correct using the DOT approach
 correct_DOT=0
 # The number of times the classification was correct using the DOT_NORM approach
@@ -176,8 +178,8 @@ for identity in identities:
 
                     # Boolean varaible to check if we the two images belong to the same identity 
                     same= False   
-                    similar_mse=[]
-                    different_mse=[]
+                    similar_MAE=[]
+                    different_MAE=[]
 
                     similar_dot=[]
                     different_dot=[]
@@ -193,7 +195,7 @@ for identity in identities:
                     
                    
 
-                    MSE_value_reference=[]
+                    MAE_value_reference=[]
                     DOT_value_reference=[]
                     DOT_NORM_value_reference=[]
                     for identity_ in identities_:
@@ -242,33 +244,33 @@ for identity in identities:
                                         np_features_unmasked_normalized=np_features_unmasked/np.sqrt(np.dot(np_features_unmasked,np.transpose(np_features_unmasked)))
 
 
-                                        MSE_value=np.sum(np.abs(np_features_masked-np_features_unmasked)) / len(np_features_masked[0])
+                                        MAE_value=np.sum(np.abs(np_features_masked-np_features_unmasked)) / len(np_features_masked[0])
                                         DOT_value=np.dot(np_features_masked,np.transpose(np_features_unmasked))
                                         DOT_NORM_value= np.dot(np_features_masked_normalized,np.transpose(np_features_unmasked_normalized))
                                         
 
                                         # if same == true do... if same ==false do this .. use some variables 
-                                        # Please note that for the case of MSE threshold the lower the difference between
-                                        # the MSE features the closer the images.
+                                        # Please note that for the case of MAE threshold the lower the difference between
+                                        # the MAE features the closer the images.
                                         # However, for the dot product the higher the product the closer the images. 
 
                                         if same :
                                             print ("same identity")
-                                            similar_mse.append(MSE_value)
+                                            similar_MAE.append(MAE_value)
                                             similar_dot.append(DOT_value)
                                             similar_ndot.append(DOT_NORM_value)
                                         
                                         else :
                                             print ("different identity")
-                                            different_mse.append(MSE_value)
+                                            different_MAE.append(MAE_value)
                                             different_dot.append(DOT_value)
                                             different_ndot.append(DOT_NORM_value)
                                              
             
-                    print ("similar_mse: ",similar_mse)
-                    print ("different_mse: ",different_mse)
-                    if np.min(similar_mse)< MSE_treshold and np.min(different_mse)> np.min(similar_mse):
-                        correct_MSE+=1
+                    print ("similar_MAE: ",similar_MAE)
+                    print ("different_MAE: ",different_MAE)
+                    if np.min(similar_MAE)< MAE_treshold and np.min(different_MAE)> np.min(similar_MAE):
+                        correct_MAE+=1
 
                     if np.max(similar_dot) > DOT_threshold and np.max(different_dot)< np.max(similar_dot):
                         correct_DOT+=1
@@ -278,7 +280,7 @@ for identity in identities:
 
 
 print("Total running time:", datetime.now() - start)
-print ("Accuracy for the MSE approach is {}".format (correct_MSE/count))
+print ("Accuracy for the MAE approach is {}".format (correct_MAE/count))
 print ("Accuracy for the DOT approach is {}".format (correct_DOT/count))
 print ("Accuracy for the DOT_NORM approach is {}".format (correct_DOT_NORM/count))
 
