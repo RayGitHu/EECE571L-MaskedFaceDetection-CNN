@@ -10,7 +10,9 @@ virtualenv --no-download /EECE571L-MaskedFaceDetection-CNN/Code/$ENV_NAME &&
 source /EECE571L-MaskedFaceDetection-CNN/Code/$ENV_NAME/bin/activate &&
 pip install --no-index --upgrade pip &&
 
-pip3 install opencv-python-headless scikit-image pillow hdf5storage ninja scikit-learn onnx mxnet Cython &&
+pip3 install opencv-python-headless pyyaml scikit-image pillow hdf5storage ninja scikit-learn onnx mxnet Cython &&
 pip3 install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchsummary==1.5.1 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html &&
 pip3 install easydict timm==0.3.2 tensorboard
+
+
 
