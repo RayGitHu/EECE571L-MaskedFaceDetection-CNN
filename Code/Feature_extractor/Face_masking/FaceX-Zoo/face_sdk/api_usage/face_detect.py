@@ -2,6 +2,9 @@
 @author: JiXuan Xu, Jun Wang
 @date: 20201019
 @contact: jun21wangustc@gmail.com 
+
+Modified by EECE 571L Team 2-Face1-CNN-2021W2 term 
+Lines 56-68 & 69 & 84-86  ADDED
 """
 import sys
 sys.path.append('.')
