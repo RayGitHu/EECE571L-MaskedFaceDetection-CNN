@@ -13,7 +13,7 @@ import numpy as np
 #genders=['males', 'females']
 types=['train']
 for type in types: 
-    directory_path = './EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Unmasked_dataset/'+type 
+    directory_path = '/EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Unmasked_dataset/'+type 
     folders= os.listdir(directory_path) # list of all the folder names
     
     count=0
@@ -71,7 +71,7 @@ import numpy as np
 #genders=['males', 'females']
 types=['val']
 for type in types: 
-    directory_path = './EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Unmasked_dataset/'+type 
+    directory_path = '/EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Unmasked_dataset/'+type 
     folders= os.listdir(directory_path) # list of all the folder names
     
     count=0
@@ -129,7 +129,7 @@ import numpy as np
 
 types=['train']
 for type in types: 
-    directory_path = './EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Unmasked_dataset/'+type 
+    directory_path = '/EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Unmasked_dataset/'+type 
     folders= os.listdir(directory_path) # list of all the folder names
     
     count=0
@@ -166,7 +166,7 @@ import numpy as np
 
 types=['val']
 for type in types: 
-    directory_path = './EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Unmasked_dataset/'+type 
+    directory_path = '/EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Unmasked_dataset/'+type 
     folders= os.listdir(directory_path) # list of all the folder names
     
     count=0
