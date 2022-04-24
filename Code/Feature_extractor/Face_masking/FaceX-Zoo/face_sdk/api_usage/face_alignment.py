@@ -4,7 +4,7 @@
 @contact: jun21wangustc@gmail.com 
 
 Modified by EECE 571L Team 2-Face1-CNN-2021W2 term 
-
+Lines 55-67 & 69-70 & 79-80  ADDED  
 """
 import sys
 sys.path.append('.')
