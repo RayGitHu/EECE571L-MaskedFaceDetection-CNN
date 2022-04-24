@@ -188,6 +188,25 @@ To run the code on Compute Canada, please do the following:...
     
     - Using Excel Avg function, take the average threshold value for each column of the MAE,DOT, and DOT_NORM approaches. You should end up with three threshold values. For your connivence, the final three threshold values were added to the “Accuracy_mae_dot_ndot_Full_dataset_Without_FC3.py” code file
 
+Note: 
+
+		- If you want to compute  MAE/ Dot product/ normalized dot thresholds for removed dataset (Without FC3 layer), please do the following:
+
+			- Rename "Threshold_mae_dot_ndot_Full_dataset_Without_FC3.sh" to "Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.sh"
+
+			- Rename  "Threshold_mae_dot_ndot_Full_dataset_Without_FC3.py" to "Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.py"
+
+			- Make sure that you replace line 26 inside "Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.sh" with  the following :
+
+  				 python -u /project/6003167/EECE571_2022/MaskedFaceRecognition_CNN/Github/EECE571L-MaskedFaceDetection-CNN/Code/Similarity_analysis/Threshold/Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.py  --dataset_path /project/6003167/EECE571_2022/MaskedFaceRecognition_CNN/Github/EECE571L-MaskedFaceDetection-CNN/Data/Similarity_analysis/Removed_dataset --LocationofSavedModel /project/6003167/EECE571_2022/MaskedFaceRecognition_CNN/Github/EECE571L-MaskedFaceDetection-CNN/Model/modelWithBestValidationAcc_unmasked_masked_250epochs_v4.h5
+ 
+
+			- After deciding whether or not to use the FC3 layer of the VGG-19 feature extractor model (Lines 86-105), run the batch file to generate an Excel file containing the threshold values for each of the 38 identities.
+
+				cd ~/scratch && sbatch Threshold_mae_dot_ndot_Removed_dataset_Without_FC3.sh
+
+			-  Using Excel Avg function, take the average threshold value for each column of the MAE,DOT, and DOT_NORM approaches. You should end up with three threshold values. For your connivence, the final three threshold values were added to the “Accuracy_mae_dot_ndot_Full_dataset_Without_FC3.py” code file.
+
 
 
 In the accuracy code, two new feature vectors are compared with the threshold value and are judged as "same" or "different" identity. Based on the two main conditions which are elaborated in our report, the accuracy of the prediction is evaluated. 
