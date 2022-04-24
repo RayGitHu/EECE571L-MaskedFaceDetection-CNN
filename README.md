@@ -23,7 +23,7 @@ To train the vgg-19 model: https://pytorch.org/tutorials/beginner/transfer_learn
 
 ![image](https://user-images.githubusercontent.com/53150477/164339904-031627ee-86b3-4cb6-bd39-977b88530681.png)
 
-### Virtual environment
+### Virtual environment [ to be updated ]
   Here are steps how we create virtual enviroment:
   
   Step 1: Create a virtual environment named ENV 
