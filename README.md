@@ -180,7 +180,15 @@ The related codes are in the Code/Similarity_analysis folder. These codes get th
 
 In the threshold code, three similarity functions (Mean Absolute Error, Dot product, and Normalized Dot product) are applied on the feature vectors and are averaged to find a threshold value.
 
-To run the code please change the following variables:...
+To run the code on Compute Canada, please do the following:...
+
+    -Run the batch file to generate an Excel file with the MAE,DOT, and DOT_NORM threshold values for the 38 identities.
+	        	cd ~/scratch && sbatch Threshold_mae_dot_ndot_Full_dataset_Without_FC3_github.sh
+            
+    
+    - Using Excel Avg function, take the average threshold value for each column of the MAE,DOT, and DOT_NORM approaches. You should end up with three threshold values. For your connivence, the final three threshold values were added to the “Accuracy_mae_dot_ndot_Full_dataset_Without_FC3.py” code file
+
+
 
 In the accuracy code, two new feature vectors are compared with the threshold value and are judged as "same" or "different" identity. Based on the two main conditions which are elaborated in our report, the accuracy of the prediction is evaluated. 
 
