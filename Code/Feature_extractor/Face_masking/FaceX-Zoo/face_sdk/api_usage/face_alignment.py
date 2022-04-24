@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
     
     #55-67 & 69-70 & 79-80  ADDED  
-    directory_path = 'EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Test_dataset/Test0/test'
+    directory_path = '/EECE571L-MaskedFaceDetection-CNN/Data/Feature_extractor/Test_dataset/Test0/test'
     folders= os.listdir(directory_path) # list of all the folder names
     
     for folder in folders: # looping through all the folders
@@ -61,10 +61,10 @@ if __name__ == '__main__':
             files= os.listdir(folder_path) # names of the files inside the folder
             files_count= len(files)      # number of the files inside the folder 
 
-            to_directory= '/EECE571L-MaskedFaceDetection-CNN/Face_masking/FaceX-Zoo/face_sdk/api_usage/temp/face_alignment/'+folder
+            to_directory= '/EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/temp/face_alignment/'+folder
             #
             os.mkdir(to_directory)
-            read_path_txt= '/EECE571L-MaskedFaceDetection-CNN/Face_masking/FaceX-Zoo/face_sdk/api_usage/temp/face_detect/'+folder
+            read_path_txt= '/EECE571L-MaskedFaceDetection-CNN/Code/Feature_extractor/Face_masking/FaceX-Zoo/face_sdk/api_usage/temp/face_detect/'+folder
             for file_ in files:
                 if file_ not in  ".DS_Store": 
                     # read image
