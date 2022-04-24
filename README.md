@@ -24,60 +24,18 @@ To train the vgg-19 model: https://pytorch.org/tutorials/beginner/transfer_learn
 ![image](https://user-images.githubusercontent.com/53150477/164339904-031627ee-86b3-4cb6-bd39-977b88530681.png)
 
 ### Virtual environment [ to be updated ]
-  Here are steps how we create virtual enviroment:
+  Here are the steps that we followed to  create a  virtual enviroment  named “env_face” on Compute Canada  with the packages need to to run our code (You do not need to create one to run our code as we have already created one for you):
   
-  Step 1: Create a virtual environment named ENV 
-
-     [name@server ~] virtualenv --no-download ~/ENV
-
-  Step 2: Once the virtual environment has been created, it must be activated: 
-
-     [name@server ~] source ~/ENV/bin/activate
-
-  Step 3: Upgrade pip in the environment
-
-    (ENV)[name@server ~]$ pip install --no-index --upgrade pip
-
-  Step 4: Install numpy in the environment
-
-    (ENV)[name@server ~] pip install numpy --no-index
-
-  Step 5: Type the following commands:
-
-    (ENV) [name@server ~]                 
-    (ENV) [name@server ~] pip install --no-index torch torchvision torchtext                
-    (ENV) [name@server ~] pip install matplotlib                
-    (ENV) [name@server ~] pip install torchsummary                
-    (ENV) [name@server ~] pip install tensorboard
-    
-### External Computing Services [ to be updated ]
-  We used Graham Cluster (graham.computecanada.ca) of the Compute Canada which is based on Linux. We installed "WinSCP" to transfer the folders into Compute Canada and "Putty" to run the Linux codes.
+ 	 - Drag "setup_face_env_github.sh" bash file from the "Bash_file" folder shown above and drop it into your scratch folder on Compute Canada:
+	 - Run the batch file to create the virtual enviroment ( it takes ~ 10 mins)
+			cd ~/scratch && bash setup_face_env_github.sh
   
-  Here are steps to run the code on the Graham cluster of the ComputeCanada:
+    
+### External Computing Services
+  We used Graham Cluster (graham.computecanada.ca) of the Compute Canada which is based on Linux. We installed "WinSCP" for Windows10 and FileZilla for MacBook Pro 12.1 to transfer folders into Compute Canada and "Putty" to run the Linux codes.
   
-  Step 1: Load python 3.7
+  For detailed steps to run the code on the Graham cluster of the ComputeCanada, please see the model section. 
   
-    [name@server ~] module load python/3.7
-    
-  Step 2: Load other dependencies:
-    
-    [name@server ~] module load nixpkgs/16.09  gcc/7.3.0 opencv/4.2
-
-  Step 3: Run the test code using the following commands
-    
-    (ENV) [name@server ~] cd /home/yourusername/scratch
-    (ENV) [name@server ~] sbatch test.sh
-    
-  Step 4: Check to see if the code is running:
-
-    (ENV) [name@server ~] squeue -u yourusername
-    
-  Step 5: Once it finished running the code. Check the scratch folder and look for the slurm part.
-
-
-
-
-
 ## Dataset
    In our project, we have two major types of datasets, Feature Extractor and Similarity Analysis.
 
@@ -302,8 +260,7 @@ root_unmasked=a directory to the unmasked images (Please note that all the unmak
 root_masked=a directory to the masked images that you want to identify (Please note that all the maksed images should be in one folder)
 classifier_path=a directory to the weighting model. You can refer to 'model/classification_model.h5'
 
- ## Code WalkThrough
-   Please check out the "Code_WalkThrough.ipynb" for detailed instructions.
+ 
 
 ## Future work
 1) The Demo code is based on the weighting model and can only identify the masked images if the identity of the person is included in the training dataset. To identify masked face of people who are not included in the training dataset, as future work the weighting model can be re-trained on triplet loss instead of cross entropy loss also the feature extractor can be re-trained on more masked/unmaksed images with different background and facial appearances.
