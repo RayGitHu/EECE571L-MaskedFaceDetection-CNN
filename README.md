@@ -23,7 +23,7 @@ To train the vgg-19 model: https://pytorch.org/tutorials/beginner/transfer_learn
 
 ![image](https://user-images.githubusercontent.com/53150477/164339904-031627ee-86b3-4cb6-bd39-977b88530681.png)
 
-### Virtual environment [ to be updated ]
+### Virtual environment
   Here are the steps that we followed to  create a  virtual enviroment  named “env_face” on Compute Canada  with the packages need to run our code (You do not need to create one to run our code as we have already created one for you):
   
  	 - Drag "setup_face_env_github.sh" bash file from the "Bash_file" folder shown above and drop it into your scratch folder on Compute Canada:
